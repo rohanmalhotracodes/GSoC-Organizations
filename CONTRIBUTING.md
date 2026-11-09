@@ -32,6 +32,10 @@ For a beginner-friendly contribution, start with the pinned
 Each organization has a separate `good first issue` with exact instructions and
 acceptance criteria.
 
+If you have **never opened a GitHub pull request before**, follow the
+[step-by-step first-PR walkthrough](./docs/first-pull-request.md) to learn how
+to fork, clone, create a branch, verify a source, run checks, and open a PR.
+
 ## Local setup
 
 GSoC Organizations requires Node.js 20.11 or newer.
