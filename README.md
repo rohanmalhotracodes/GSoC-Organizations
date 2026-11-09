@@ -7,16 +7,30 @@
 <h1 align="center">GSoC Organizations</h1>
 
 <p align="center">
-  A comprehensive directory of Google Summer of Code organizations across every archived program year.
+  Discover past Google Summer of Code organizations, explore their projects, and learn open source by contributing to a real repository.
 </p>
 
 <p align="center">
-  <a href="https://gsocorganizations.xyz"><strong>Visit the website</strong></a>
+  <a href="https://gsocorganizations.xyz"><strong>Explore the directory</strong></a>
   ·
-  <a href="https://github.com/rohanmalhotracodes/GSoC-Organizations/issues">Report an issue</a>
+  <a href="./docs/first-pull-request.md"><strong>Make your first PR</strong></a>
+  ·
+  <a href="https://github.com/rohanmalhotracodes/GSoC-Organizations/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22+no%3Aassignee">Good first issues</a>
 </p>
 
 ![GSoC Organizations directory](./docs/images/directory.jpg)
+
+## New to open source? Make your first real pull request
+
+One of the hardest parts of starting open source is figuring out **where to begin and what to do**. This repository offers focused, beginner-friendly tasks that improve the GSoC directory while helping you learn a real GitHub contribution workflow.
+
+1. [Read the step-by-step first-PR walkthrough](./docs/first-pull-request.md) — fork, branch, verify a source, make a change, run checks, and open a PR.
+2. [Pick an unassigned good first issue](https://github.com/rohanmalhotracodes/GSoC-Organizations/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22+no%3Aassignee) — or explore the [repository-link contribution drive](https://github.com/rohanmalhotracodes/GSoC-Organizations/issues/382).
+3. Comment `/claim` on your chosen issue **before starting** and wait for the bot to confirm. Follow the [contributing guide](./CONTRIBUTING.md) and [CLA instructions](./CLA.md).
+
+You don't need prior GSoC experience. You will practice source verification, Git branches, pull requests, CI, and code review in an actively maintained project.
+
+If the directory helped you, consider starring this repository so you can find it again and others can discover it.
 
 ## About
 
