@@ -172,6 +172,19 @@ function repositoryFromUrl(value) {
 }
 
 const manualRepositories = {
+  AboutCode: {
+    repositories: [
+      {
+        label: 'AboutCode repositories',
+        url: 'https://github.com/aboutcode-org',
+        host: 'GitHub',
+        verified: true,
+        lastChecked: '2026-11-10',
+      },
+    ],
+    organizationProfile: 'https://github.com/aboutcode-org',
+    source: 'manual',
+  },
   '52°North Spatial Information Research GmbH': {
     repositories: [
       {

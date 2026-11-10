@@ -1044,13 +1044,15 @@
     "repository": {
       "repositories": [
         {
-          "label": "Source repository",
-          "url": "https://github.com/aboutcode-org/aboutcode",
+          "label": "AboutCode repositories",
+          "url": "https://github.com/aboutcode-org",
           "host": "GitHub",
-          "verified": false
+          "verified": true,
+          "lastChecked": "2026-11-10"
         }
       ],
-      "source": "derived"
+      "organizationProfile": "https://github.com/aboutcode-org",
+      "source": "manual"
     }
   },
   {
