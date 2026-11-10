@@ -172,6 +172,19 @@ function repositoryFromUrl(value) {
 }
 
 const manualRepositories = {
+  '52°North Spatial Information Research GmbH': {
+    repositories: [
+      {
+        label: '52°North repositories',
+        url: 'https://github.com/52North',
+        host: 'GitHub',
+        verified: true,
+        lastChecked: '2026-11-10',
+      },
+    ],
+    organizationProfile: 'https://github.com/52North',
+    source: 'manual',
+  },
   'Academy Software Foundation': {
     repositories: [
       {

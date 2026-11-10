@@ -1,8 +1,16 @@
 {
   "52°North Spatial Information Research GmbH": {
-    "repositories": [],
-    "organizationProfile": "https://www.google.com/search?q=52%C2%B0North%20Spatial%20Information%20Research%20GmbH%20source%20code%20repository",
-    "source": "search"
+    "repositories": [
+      {
+        "label": "52°North repositories",
+        "url": "https://github.com/52North",
+        "host": "GitHub",
+        "verified": true,
+        "lastChecked": "2026-11-10"
+      }
+    ],
+    "organizationProfile": "https://github.com/52North",
+    "source": "manual"
   },
   "aimacode": {
     "repositories": [
