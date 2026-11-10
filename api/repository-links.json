@@ -1641,9 +1641,17 @@
     "source": "search"
   },
   "3DTK": {
-    "repositories": [],
-    "organizationProfile": "https://www.google.com/search?q=3DTK%20source%20code%20repository",
-    "source": "search"
+    "repositories": [
+      {
+        "label": "3DTK source repository",
+        "url": "https://github.com/JMUWRobotics/3DTK",
+        "host": "GitHub",
+        "verified": true,
+        "lastChecked": "2026-11-10"
+      }
+    ],
+    "organizationProfile": "https://github.com/JMUWRobotics/3DTK",
+    "source": "manual"
   },
   "Center for Research in Open Source Software (CROSS)": {
     "repositories": [],

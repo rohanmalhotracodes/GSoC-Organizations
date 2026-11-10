@@ -172,6 +172,19 @@ function repositoryFromUrl(value) {
 }
 
 const manualRepositories = {
+  '3DTK': {
+    repositories: [
+      {
+        label: '3DTK source repository',
+        url: 'https://github.com/JMUWRobotics/3DTK',
+        host: 'GitHub',
+        verified: true,
+        lastChecked: '2026-11-10',
+      },
+    ],
+    organizationProfile: 'https://github.com/JMUWRobotics/3DTK',
+    source: 'manual',
+  },
   Metasploit: {
     repositories: [
       {
