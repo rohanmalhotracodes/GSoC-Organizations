@@ -172,6 +172,19 @@ function repositoryFromUrl(value) {
 }
 
 const manualRepositories = {
+  'Academy Software Foundation': {
+    repositories: [
+      {
+        label: 'Academy Software Foundation repositories',
+        url: 'https://github.com/AcademySoftwareFoundation',
+        host: 'GitHub',
+        verified: true,
+        lastChecked: '2026-11-10',
+      },
+    ],
+    organizationProfile: 'https://github.com/AcademySoftwareFoundation',
+    source: 'manual',
+  },
   '3DTK': {
     repositories: [
       {

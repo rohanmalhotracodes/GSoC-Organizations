@@ -2141,9 +2141,17 @@
     "source": "search"
   },
   "Academy Software Foundation": {
-    "repositories": [],
-    "organizationProfile": "https://www.google.com/search?q=Academy%20Software%20Foundation%20source%20code%20repository",
-    "source": "search"
+    "repositories": [
+      {
+        "label": "Academy Software Foundation repositories",
+        "url": "https://github.com/AcademySoftwareFoundation",
+        "host": "GitHub",
+        "verified": true,
+        "lastChecked": "2026-11-10"
+      }
+    ],
+    "organizationProfile": "https://github.com/AcademySoftwareFoundation",
+    "source": "manual"
   },
   "Accord Project": {
     "repositories": [
