@@ -38,7 +38,13 @@ Do not use a guessed repository, an unrelated contributor fork, or a generic sea
 
 ## 4. Make one focused change
 
-Open `api/repository-links.json`, find the **existing** entry for your assigned organization, and replace the missing repository link with the verified destination. Follow the JSON structure and exact organization key shown in your issue.
+Open `scripts/prepare-data.mjs`, find the `manualRepositories` object, and add the verified destination under the **exact** organization name shown in your issue. Then regenerate the derived data files:
+
+```sh
+npm run prepare:data
+```
+
+This updates `api/repository-links.json` and `src/data/organizations.json`. Do not edit either generated JSON file by itself because the next build will overwrite it.
 
 Use the supported host value, a real `lastChecked` UTC date, and `verified: true` **only after verification**. Do not create duplicate entries or reformat unrelated records.
 
@@ -57,7 +63,7 @@ Open the new URL in a browser to confirm it reaches the intended organization. I
 ## 6. Commit and push your work
 
 ```sh
-git add api/repository-links.json
+git add scripts/prepare-data.mjs api/repository-links.json src/data/organizations.json
 git commit -m "data: verify repository link for organization"
 git push -u origin add-repository-link
 ```

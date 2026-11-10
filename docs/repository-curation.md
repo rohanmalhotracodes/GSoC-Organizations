@@ -4,7 +4,10 @@ Every organization must end in one of three states: manually verified repository
 
 ## Schema
 
-`api/repository-links.json` is keyed by the exact organization name:
+Manually verified records live in the `manualRepositories` object in
+`scripts/prepare-data.mjs`, keyed by the exact organization name. The build
+uses these records to generate `api/repository-links.json` and the repository
+data embedded in `src/data/organizations.json`:
 
 ```json
 {
@@ -25,6 +28,10 @@ Every organization must end in one of three states: manually verified repository
 ```
 
 Supported host labels are `GitHub`, `GitLab`, `Codeberg`, `SourceHut`, and `Self-hosted Git`.
+
+Never edit either generated JSON file by itself. Run `npm run prepare:data`
+after changing `manualRepositories` and commit the source plus both generated
+files.
 
 ## Manual review procedure
 
@@ -60,6 +67,7 @@ If no direct repository can be established, leave `repositories` empty and provi
 Offline format and duplicate checks:
 
 ```sh
+npm run prepare:data
 npm run validate
 ```
 

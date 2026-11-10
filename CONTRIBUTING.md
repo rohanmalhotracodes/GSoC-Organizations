@@ -83,11 +83,13 @@ Do not submit:
 Read [the repository curation policy](./docs/repository-curation.md) for the
 complete verification rules.
 
-### 3. Update the existing JSON entry
+### 3. Add the verified source record
 
-Edit only the organization's existing entry in
-[`api/repository-links.json`](./api/repository-links.json). Do not create a
-second key for the same organization.
+Add the organization's exact name and verified destination to the
+`manualRepositories` object in
+[`scripts/prepare-data.mjs`](./scripts/prepare-data.mjs). Do not edit
+`api/repository-links.json` or `src/data/organizations.json` by itself; both
+are generated and will be overwritten by the next build.
 
 ```json
 "Organization Name": {
@@ -109,9 +111,16 @@ Supported host values are `GitHub`, `GitLab`, `Codeberg`, `SourceHut`, and
 `Self-hosted Git`. Use the actual UTC review date for `lastChecked`. Umbrella
 organizations may require multiple repository entries.
 
+Regenerate the derived files after editing the source record:
+
+```sh
+npm run prepare:data
+```
+
 ### 4. Validate the change
 
 ```sh
+npm run prepare:data
 npm run validate
 node scripts/validate-repository-links.mjs --network
 ```
