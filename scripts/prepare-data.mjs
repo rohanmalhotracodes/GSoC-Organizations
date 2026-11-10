@@ -172,11 +172,24 @@ function repositoryFromUrl(value) {
 }
 
 const manualRepositories = {
+  AboutCode: {
+    repositories: [
+      {
+        label: 'AboutCode repositories',
+        url: 'https://github.com/aboutcode-org',
+        host: 'GitHub',
+        verified: true,
+        lastChecked: '2026-11-10',
+      },
+    ],
+    organizationProfile: 'https://github.com/aboutcode-org',
+    source: 'manual',
+  },
   'Ceph Foundation': {
     repositories: [
       {
-        label: 'Ceph source repository',
-        url: 'https://github.com/ceph/ceph',
+        label: 'Ceph repositories',
+        url: 'https://github.com/ceph',
         host: 'GitHub',
         verified: true,
         lastChecked: '2026-11-10',
