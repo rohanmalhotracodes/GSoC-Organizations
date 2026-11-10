@@ -172,6 +172,19 @@ function repositoryFromUrl(value) {
 }
 
 const manualRepositories = {
+  'Ceph Foundation': {
+    repositories: [
+      {
+        label: 'Ceph source repository',
+        url: 'https://github.com/ceph/ceph',
+        host: 'GitHub',
+        verified: true,
+        lastChecked: '2026-11-10',
+      },
+    ],
+    organizationProfile: 'https://github.com/ceph',
+    source: 'manual',
+  },
   '52°North Spatial Information Research GmbH': {
     repositories: [
       {

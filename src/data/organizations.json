@@ -16141,9 +16141,17 @@
       }
     ],
     "repository": {
-      "repositories": [],
-      "organizationProfile": "https://www.google.com/search?q=Ceph%20Foundation%20source%20code%20repository",
-      "source": "search"
+      "repositories": [
+        {
+          "label": "Ceph source repository",
+          "url": "https://github.com/ceph/ceph",
+          "host": "GitHub",
+          "verified": true,
+          "lastChecked": "2026-11-10"
+        }
+      ],
+      "organizationProfile": "https://github.com/ceph",
+      "source": "manual"
     }
   },
   {
