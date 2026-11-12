@@ -452,6 +452,19 @@ const manualRepositories = {
     organizationProfile: 'https://git.kernel.org/pub/scm/git/',
     source: 'manual',
   },
+  'Free and Open Source Silicon Foundation': {
+    repositories: [
+      {
+        label: 'Official repositories',
+        url: 'https://github.com/fossi-foundation/open-pdks',
+        host: 'GitHub',
+        verified: true,
+        lastChecked: '2026-11-12',
+      },
+    ],
+    organizationProfile: 'https://github.com/fossi-foundation',
+    source: 'manual',
+  },
 };
 
 class UnionFind {
