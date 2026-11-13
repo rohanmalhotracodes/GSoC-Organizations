@@ -3536,9 +3536,17 @@
     "source": "search"
   },
   "OpenMS Inc": {
-    "repositories": [],
-    "organizationProfile": "https://www.google.com/search?q=OpenMS%20Inc%20source%20code%20repository",
-    "source": "search"
+    "repositories": [
+      {
+        "label": "OpenMS Inc",
+        "url": "https://github.com/OpenMS/OpenMS",
+        "host": "GitHub",
+        "verified": true,
+        "lastChecked": "2026-11-13"
+      }
+    ],
+    "organizationProfile": "https://github.com/OpenMS",
+    "source": "manual"
   },
   "The OpenROAD Initiative": {
     "repositories": [],

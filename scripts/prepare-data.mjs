@@ -498,6 +498,19 @@ const manualRepositories = {
     organizationProfile: 'https://git.kernel.org/pub/scm/git/',
     source: 'manual',
   },
+  'OpenMS Inc': {
+    repositories: [
+      {
+        label: 'OpenMS Inc',
+        url: 'https://github.com/OpenMS/OpenMS',
+        host: 'GitHub',
+        verified: true,
+        lastChecked: '2026-11-13',
+      },
+    ],
+    organizationProfile: 'https://github.com/OpenMS',
+    source: 'manual',
+  },
 };
 
 class UnionFind {
