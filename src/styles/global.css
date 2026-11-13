@@ -1362,6 +1362,17 @@ html.page-navigating .site-loading {
   font-size: clamp(26px, 2.5vw, 34px);
 }
 
+.organization-title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.detail-bookmark-button {
+  position: static;
+  flex: 0 0 auto;
+}
+
 .organization-heading > p {
   max-width: 780px;
   margin: 5px 0 11px;

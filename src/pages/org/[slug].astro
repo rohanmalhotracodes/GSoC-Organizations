@@ -151,7 +151,25 @@ const organizationStructuredData = [
           href={`/category/${hubSlug(organization.category)}/`}
           >{organization.category}</a
         >
-        <h1>{organization.name}</h1>
+        <div class="organization-title-row">
+          <h1>{organization.name}</h1>
+          <button
+            class="bookmark-button detail-bookmark-button"
+            type="button"
+            data-organization-bookmark
+            data-organization-slug={organization.slug}
+            data-organization-name={organization.name}
+            aria-label={`Save ${organization.name}`}
+            title="Save organization"
+            aria-pressed="false"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M7.25 3.5h9.5c.97 0 1.75.78 1.75 1.75v15.1L12 16.4l-6.5 3.95V5.25c0-.97.78-1.75 1.75-1.75Z"
+              ></path>
+            </svg>
+          </button>
+        </div>
         <p>{organization.description}</p>
         <div class="hero-taxonomy">
           <div class="taxonomy-group">
@@ -386,6 +404,70 @@ const organizationStructuredData = [
 </BaseLayout>
 
 <script>
+  const bookmarksKey = 'gsoc-explorer-bookmarks-v1';
+  const bookmarkButton = document.querySelector<HTMLButtonElement>(
+    '[data-organization-bookmark]',
+  );
+
+  if (bookmarkButton) {
+    const slug = bookmarkButton.dataset.organizationSlug;
+    const name = bookmarkButton.dataset.organizationName;
+    const label = bookmarkButton.querySelector<HTMLElement>(
+      '[data-bookmark-label]',
+    );
+
+    const syncBookmark = () => {
+      let bookmarks: string[] = [];
+      try {
+        const stored: unknown = JSON.parse(
+          localStorage.getItem(bookmarksKey) || '[]',
+        );
+        if (Array.isArray(stored))
+          bookmarks = stored.filter(
+            (value): value is string => typeof value === 'string',
+          );
+      } catch {
+        localStorage.removeItem(bookmarksKey);
+      }
+
+      const bookmarked = !!slug && bookmarks.includes(slug);
+      bookmarkButton.classList.toggle('is-bookmarked', bookmarked);
+      bookmarkButton.setAttribute('aria-pressed', String(bookmarked));
+      bookmarkButton.setAttribute(
+        'aria-label',
+        bookmarked ? `Remove ${name} from saved organizations` : `Save ${name}`,
+      );
+      bookmarkButton.title = bookmarked
+        ? 'Remove saved organization'
+        : 'Save organization';
+    };
+
+    bookmarkButton.addEventListener('click', () => {
+      if (!slug) return;
+      let bookmarks: unknown;
+      try {
+        bookmarks = JSON.parse(localStorage.getItem(bookmarksKey) || '[]');
+      } catch {
+        bookmarks = [];
+      }
+      const saved = Array.isArray(bookmarks)
+        ? bookmarks.filter(
+            (value): value is string => typeof value === 'string',
+          )
+        : [];
+      const next = saved.includes(slug)
+        ? saved.filter((value) => value !== slug)
+        : [...saved, slug];
+      localStorage.setItem(bookmarksKey, JSON.stringify(next));
+      syncBookmark();
+    });
+
+    window.addEventListener('storage', (event) => {
+      if (event.key === bookmarksKey) syncBookmark();
+    });
+    syncBookmark();
+  }
+
   document
     .querySelectorAll<HTMLElement>('[data-project-history]')
     .forEach((history) => {
