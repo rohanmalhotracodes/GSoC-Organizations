@@ -433,6 +433,26 @@ const manualRepositories = {
     organizationProfile: 'https://projects.blender.org/blender',
     source: 'manual',
   },
+  FFmpeg: {
+    repositories: [
+      {
+        label: 'Official repositories',
+        url: 'https://git.ffmpeg.org/ffmpeg.git',
+        host: 'Self-hosted Git',
+        verified: true,
+        lastChecked: '2026-11-13',
+      },
+      {
+        label: 'GitHub organization',
+        url: 'https://github.com/FFmpeg',
+        host: 'GitHub',
+        verified: true,
+        lastChecked: '2026-11-13',
+      },
+    ],
+    organizationProfile: 'https://git.ffmpeg.org/',
+    source: 'manual',
+  },
   'KDE Community': {
     repositories: [
       {

@@ -279,9 +279,24 @@
     "source": "search"
   },
   "FFmpeg": {
-    "repositories": [],
-    "organizationProfile": "https://www.google.com/search?q=FFmpeg%20source%20code%20repository",
-    "source": "search"
+    "repositories": [
+      {
+        "label": "Official repositories",
+        "url": "https://git.ffmpeg.org/ffmpeg.git",
+        "host": "Self-hosted Git",
+        "verified": true,
+        "lastChecked": "2026-11-13"
+      },
+      {
+        "label": "GitHub organization",
+        "url": "https://github.com/FFmpeg",
+        "host": "GitHub",
+        "verified": true,
+        "lastChecked": "2026-11-13"
+      }
+    ],
+    "organizationProfile": "https://git.ffmpeg.org/",
+    "source": "manual"
   },
   "FOSDEM": {
     "repositories": [
