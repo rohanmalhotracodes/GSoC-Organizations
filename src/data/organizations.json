@@ -28240,9 +28240,24 @@
       }
     ],
     "repository": {
-      "repositories": [],
-      "organizationProfile": "https://www.google.com/search?q=CVXPY%20source%20code%20repository",
-      "source": "search"
+      "repositories": [
+        {
+          "label": "CVXPY",
+          "url": "https://github.com/cvxpy/cvxpy",
+          "host": "GitHub",
+          "verified": true,
+          "lastChecked": "2026-11-13"
+        },
+        {
+          "label": "GitHub organization",
+          "url": "https://github.com/cvxpy",
+          "host": "GitHub",
+          "verified": true,
+          "lastChecked": "2026-11-13"
+        }
+      ],
+      "organizationProfile": "https://github.com/cvxpy",
+      "source": "manual"
     }
   },
   {

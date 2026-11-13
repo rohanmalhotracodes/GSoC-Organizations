@@ -551,6 +551,26 @@ const manualRepositories = {
     organizationProfile: 'https://github.com/discourse',
     source: 'manual',
   },
+  CVXPY: {
+    repositories: [
+      {
+        label: 'CVXPY',
+        url: 'https://github.com/cvxpy/cvxpy',
+        host: 'GitHub',
+        verified: true,
+        lastChecked: '2026-11-13',
+      },
+      {
+        label: 'GitHub organization',
+        url: 'https://github.com/cvxpy',
+        host: 'GitHub',
+        verified: true,
+        lastChecked: '2026-11-13',
+      },
+    ],
+    organizationProfile: 'https://github.com/cvxpy',
+    source: 'manual',
+  },
 };
 
 class UnionFind {
