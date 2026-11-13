@@ -284,9 +284,24 @@
     "source": "search"
   },
   "FOSDEM": {
-    "repositories": [],
-    "organizationProfile": "https://www.google.com/search?q=FOSDEM%20source%20code%20repository",
-    "source": "search"
+    "repositories": [
+      {
+        "label": "Official repositories",
+        "url": "https://git.fosdem.org/FOSDEM",
+        "host": "Self-hosted Git",
+        "verified": true,
+        "lastChecked": "2026-11-13"
+      },
+      {
+        "label": "GitHub organization",
+        "url": "https://github.com/FOSDEM",
+        "host": "GitHub",
+        "verified": true,
+        "lastChecked": "2026-11-13"
+      }
+    ],
+    "organizationProfile": "https://git.fosdem.org/FOSDEM",
+    "source": "manual"
   },
   "FOSSASIA": {
     "repositories": [],
@@ -307,14 +322,30 @@
     "source": "manual"
   },
   "The FreeBSD Project": {
-    "repositories": [],
-    "organizationProfile": "https://www.google.com/search?q=The%20FreeBSD%20Project%20source%20code%20repository",
-    "source": "search"
+    "repositories": [
+      {
+        "label": "Official repositories",
+        "url": "https://github.com/freebsd",
+        "host": "GitHub",
+        "verified": true,
+        "lastChecked": "2026-11-12"
+      }
+    ],
+    "organizationProfile": "https://github.com/freebsd",
+    "source": "manual"
   },
   "freifunk": {
-    "repositories": [],
-    "organizationProfile": "https://www.google.com/search?q=freifunk%20source%20code%20repository",
-    "source": "search"
+    "repositories": [
+      {
+        "label": "Official repositories",
+        "url": "https://github.com/freifunk",
+        "host": "GitHub",
+        "verified": true,
+        "lastChecked": "2026-11-11"
+      }
+    ],
+    "organizationProfile": "https://github.com/freifunk",
+    "source": "manual"
   },
   "Gambit: The package for computation in game theory": {
     "repositories": [
