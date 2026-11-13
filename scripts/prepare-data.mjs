@@ -172,6 +172,19 @@ function repositoryFromUrl(value) {
 }
 
 const manualRepositories = {
+  FOSSASIA: {
+    repositories: [
+      {
+        label: 'Official repositories',
+        url: 'https://github.com/fossasia',
+        host: 'GitHub',
+        verified: true,
+        lastChecked: '2026-11-13',
+      },
+    ],
+    organizationProfile: 'https://github.com/fossasia',
+    source: 'manual',
+  },
   freifunk: {
     repositories: [
       {
