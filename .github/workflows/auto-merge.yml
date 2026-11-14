@@ -1,56 +1,126 @@
 name: Auto-merge approved pull requests
 
 on:
-  pull_request_review:
-    types: [submitted]
+  workflow_run:
+    workflows: [Record maintainer approval]
+    types: [completed]
 
 permissions:
   contents: write
   pull-requests: write
 
 concurrency:
-  group: auto-merge-${{ github.event.pull_request.number }}
+  group: auto-merge-${{ github.event.workflow_run.head_sha }}
   cancel-in-progress: false
 
 jobs:
   enable:
     name: Enable auto-merge after maintainer approval
-    if: >-
-      github.event.review.state == 'approved' &&
-      github.event.pull_request.base.ref == 'main' &&
-      github.event.pull_request.draft == false
+    if: github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Verify that the reviewer is a maintainer
-        id: reviewer
+      - name: Verify current maintainer approval
+        id: approval
         uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7
         with:
           script: |
-            const reviewer = context.payload.review.user.login;
-            const { data } = await github.rest.repos.getCollaboratorPermissionLevel({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              username: reviewer,
-            });
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const reviewer = context.payload.workflow_run.actor.login;
+            let pullNumber = context.payload.workflow_run.pull_requests?.[0]?.number;
 
-            const allowedPermissions = new Set(['admin', 'maintain', 'write']);
-            const allowed = allowedPermissions.has(data.permission);
-            core.setOutput('allowed', allowed ? 'true' : 'false');
-
-            if (!allowed) {
-              core.notice(`@${reviewer} does not have maintainer-level merge permission.`);
+            if (!pullNumber) {
+              const associated = await github.rest.repos.listPullRequestsAssociatedWithCommit({
+                owner,
+                repo,
+                commit_sha: context.payload.workflow_run.head_sha,
+              });
+              pullNumber = associated.data.find(
+                (pull) => pull.state === 'open' && pull.base.ref === 'main',
+              )?.number;
             }
 
+            if (!pullNumber) {
+              core.notice('No open pull request could be associated with this review.');
+              core.setOutput('allowed', 'false');
+              return;
+            }
+
+            const { data: pull } = await github.rest.pulls.get({
+              owner,
+              repo,
+              pull_number: pullNumber,
+            });
+
+            if (pull.state !== 'open' || pull.base.ref !== 'main' || pull.draft) {
+              core.notice('The pull request is closed, targets another branch, or is a draft.');
+              core.setOutput('allowed', 'false');
+              return;
+            }
+
+            let permission = 'none';
+
+            try {
+              const { data } = await github.rest.repos.getCollaboratorPermissionLevel({
+                owner,
+                repo,
+                username: reviewer,
+              });
+              permission = data.permission;
+            } catch (error) {
+              if (error.status !== 404) throw error;
+            }
+
+            const allowedPermissions = new Set(['admin', 'maintain', 'write']);
+            if (!allowedPermissions.has(permission)) {
+              core.notice(`@${reviewer} does not have maintainer-level merge permission.`);
+              core.setOutput('allowed', 'false');
+              return;
+            }
+
+            const { data: reviews } = await github.rest.pulls.listReviews({
+              owner,
+              repo,
+              pull_number: pullNumber,
+              per_page: 100,
+            });
+            const currentApproval = [...reviews]
+              .reverse()
+              .find(
+                (review) =>
+                  review.user?.login === reviewer &&
+                  review.commit_id === pull.head.sha,
+              );
+
+            if (currentApproval?.state !== 'APPROVED') {
+              core.notice(
+                `@${reviewer} does not have a current approval for ${pull.head.sha}.`,
+              );
+              core.setOutput('allowed', 'false');
+              return;
+            }
+
+            core.setOutput('allowed', 'true');
+            core.setOutput('pull-number', String(pullNumber));
+            core.setOutput('reviewed-head-sha', pull.head.sha);
+
       - name: Squash and merge when all requirements pass
-        if: steps.reviewer.outputs.allowed == 'true'
+        if: steps.approval.outputs.allowed == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
-          PR_NUMBER: ${{ github.event.pull_request.number }}
-          REVIEWED_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
-        run: >-
-          gh pr merge "$PR_NUMBER"
-          --repo "$GITHUB_REPOSITORY"
-          --squash
-          --auto
-          --match-head-commit "$REVIEWED_HEAD_SHA"
+          PR_NUMBER: ${{ steps.approval.outputs.pull-number }}
+          REVIEWED_HEAD_SHA: ${{ steps.approval.outputs.reviewed-head-sha }}
+        run: |
+          current_head="$(gh pr view "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --json headRefOid --jq .headRefOid)"
+
+          if [[ "$current_head" != "$REVIEWED_HEAD_SHA" ]]; then
+            echo "The pull request changed after this review; auto-merge was not enabled."
+            exit 1
+          fi
+
+          gh pr merge "$PR_NUMBER" \
+            --repo "$GITHUB_REPOSITORY" \
+            --squash \
+            --auto \
+            --match-head-commit "$REVIEWED_HEAD_SHA"

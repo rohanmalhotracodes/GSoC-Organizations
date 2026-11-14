@@ -182,8 +182,9 @@ requested:
    agreement.
 2. CI checks formatting, curated data, repository links, unit tests, and the
    production build.
-3. After CI passes, the maintainer is automatically requested for human review.
-4. A maintainer approval enables squash auto-merge. GitHub merges only after
+3. After all automated checks pass for the current commit, the bot records an
+   automated checks approval and requests the maintainer for human review.
+4. A separate maintainer approval enables squash auto-merge. GitHub waits until
    every protected-branch requirement, including CI and the CLA check, passes.
 
 Automated checks are a first pass, not a guarantee that a change will be

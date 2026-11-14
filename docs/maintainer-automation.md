@@ -2,24 +2,43 @@
 
 ## Pull-request auto-merge
 
+The `Prepare pull request for review` workflow waits for CI, the CLA, and the
+issue-assignment guard to pass for the current commit. It then records an
+automated checks approval and requests review from the maintainer. That bot
+approval confirms only that automation passed; it does not replace human
+review.
+
 The `Auto-merge approved pull requests` workflow enables a squash auto-merge
-only after an approval from a repository member with `write`, `maintain`, or
-`admin` permission. It pins the operation to the reviewed head commit so that a
-later push cannot be merged under an older approval.
+only after a separate approval from a repository member with `write`,
+`maintain`, or `admin` permission. It pins the operation to the reviewed head
+commit so that a later push cannot be merged under an older approval.
 
 Complete this one-time GitHub configuration:
 
-1. Open **Settings → General → Pull Requests** and enable **Allow auto-merge**.
-2. Protect `main` with a branch protection rule or ruleset that requires:
+1. Open **Settings → Actions → General → Workflow permissions**. Keep the
+   default permission at **Read repository contents and packages**, and enable
+   **Allow GitHub Actions to create and approve pull requests**. Each workflow
+   declares its own narrower permissions.
+2. Open **Settings → General → Pull Requests** and enable **Allow auto-merge**
+   and **Allow squash merging**.
+3. Protect `main` with a branch protection rule or ruleset that requires:
    - a pull request before merging;
    - at least one approval;
    - dismissal of stale approvals after new commits;
    - the `Quality checks` and `CLA / signed` status checks.
-3. Do not allow required checks or reviews to be bypassed by the automation.
+4. Do not allow required checks or reviews to be bypassed by the automation.
 
-GitHub then holds an approved pull request until every required check passes and
-squash-merges it automatically. An approval by a contributor without maintainer
-permissions does not enable auto-merge.
+GitHub then holds a maintainer-approved pull request until every required check
+passes and squash-merges it automatically. A bot or contributor approval does
+not trigger this workflow; only an approval from a maintainer-level account
+enables auto-merge.
+
+Review events from forked pull requests receive a read-only token. The
+`Record maintainer approval` workflow therefore records the event without
+making changes, and `Auto-merge approved pull requests` handles it through a
+trusted `workflow_run`. The trusted workflow re-fetches the pull request,
+review, reviewer permission, and reviewed commit before it receives scoped
+merge permission.
 
 ## Weekly production deployment
 

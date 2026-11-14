@@ -1,42 +1,197 @@
-name: Request maintainer review
+name: Prepare pull request for review
 
 on:
   workflow_run:
     workflows: [CI]
     types: [completed]
+  pull_request_target:
+    types: [reopened, ready_for_review]
+  issue_comment:
+    types: [created]
 
 permissions:
   contents: read
+  checks: read
+  statuses: read
   pull-requests: write
 
+concurrency:
+  group: >-
+    prepare-review-${{
+      github.event.pull_request.number ||
+      github.event.issue.number ||
+      github.event.workflow_run.head_sha
+    }}
+  cancel-in-progress: true
+
 jobs:
-  request:
-    if: github.event.workflow_run.conclusion == 'success'
+  prepare:
+    name: Approve checks and request maintainer review
+    if: >-
+      github.event_name != 'issue_comment' ||
+      (github.event.issue.pull_request &&
+      github.event.comment.body == 'I have read and agree to the Contributor License Agreement')
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
-      - name: Request review after automated checks pass
+      - name: Verify checks, approve, and request review
         uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7
         with:
           script: |
             const owner = context.repo.owner;
             const repo = context.repo.repo;
             const maintainer = 'rohanmalhotracodes';
-            const pulls = await github.rest.repos.listPullRequestsAssociatedWithCommit({
-              owner,
-              repo,
-              commit_sha: context.payload.workflow_run.head_sha,
-            });
 
-            for (const pull of pulls.data.filter(({ state }) => state === 'open')) {
-              if (pull.user.login === maintainer) continue;
-              try {
-                await github.rest.pulls.requestReviewers({
+            let pullNumber;
+
+            if (context.payload.pull_request) {
+              pullNumber = context.payload.pull_request.number;
+            } else if (context.payload.issue?.pull_request) {
+              pullNumber = context.payload.issue.number;
+            } else if (context.payload.workflow_run) {
+              if (context.payload.workflow_run.conclusion !== 'success') {
+                core.notice('CI did not pass, so the pull request is not ready for review.');
+                return;
+              }
+
+              pullNumber = context.payload.workflow_run.pull_requests?.[0]?.number;
+
+              if (!pullNumber) {
+                const associated = await github.rest.repos.listPullRequestsAssociatedWithCommit({
                   owner,
                   repo,
-                  pull_number: pull.number,
-                  reviewers: [maintainer],
+                  commit_sha: context.payload.workflow_run.head_sha,
                 });
-              } catch (error) {
-                if (error.status !== 422) throw error;
+                pullNumber = associated.data.find(
+                  (pull) => pull.state === 'open' && pull.base.ref === 'main',
+                )?.number;
               }
             }
+
+            if (!pullNumber) {
+              core.notice('No open pull request could be associated with this event.');
+              return;
+            }
+
+            const { data: pull } = await github.rest.pulls.get({
+              owner,
+              repo,
+              pull_number: pullNumber,
+            });
+
+            if (pull.state !== 'open' || pull.base.ref !== 'main' || pull.draft) {
+              core.notice('The pull request is closed, targets another branch, or is still a draft.');
+              return;
+            }
+
+            if (pull.user.login === maintainer || pull.user.type === 'Bot') {
+              core.notice('Maintainer and bot pull requests do not need automated approval.');
+              return;
+            }
+
+            const requiredCheckRuns = [
+              'Quality checks',
+              'Verify linked issue assignment',
+            ];
+            const requiredStatuses = ['CLA / signed'];
+            let readiness;
+
+            for (let attempt = 1; attempt <= 12; attempt += 1) {
+              const [{ data: checks }, { data: combinedStatus }] = await Promise.all([
+                github.rest.checks.listForRef({
+                  owner,
+                  repo,
+                  ref: pull.head.sha,
+                  filter: 'latest',
+                  per_page: 100,
+                }),
+                github.rest.repos.getCombinedStatusForRef({
+                  owner,
+                  repo,
+                  ref: pull.head.sha,
+                  per_page: 100,
+                }),
+              ]);
+
+              const checkConclusions = new Map(
+                checks.check_runs.map((check) => [check.name, check.conclusion]),
+              );
+              const statusStates = new Map(
+                combinedStatus.statuses.map((status) => [status.context, status.state]),
+              );
+
+              const waitingChecks = requiredCheckRuns.filter(
+                (name) => checkConclusions.get(name) !== 'success',
+              );
+              const waitingStatuses = requiredStatuses.filter(
+                (name) => statusStates.get(name) !== 'success',
+              );
+
+              readiness = { waitingChecks, waitingStatuses };
+              if (waitingChecks.length === 0 && waitingStatuses.length === 0) break;
+
+              if (attempt < 12) {
+                await new Promise((resolve) => setTimeout(resolve, 10_000));
+              }
+            }
+
+            if (readiness.waitingChecks.length || readiness.waitingStatuses.length) {
+              core.notice(
+                `Not ready yet. Checks: ${readiness.waitingChecks.join(', ') || 'complete'}; ` +
+                  `statuses: ${readiness.waitingStatuses.join(', ') || 'complete'}.`,
+              );
+              return;
+            }
+
+            const { data: reviews } = await github.rest.pulls.listReviews({
+              owner,
+              repo,
+              pull_number: pullNumber,
+              per_page: 100,
+            });
+            const botAlreadyApproved = reviews.some(
+              (review) =>
+                review.user?.login === 'github-actions[bot]' &&
+                review.state === 'APPROVED' &&
+                review.commit_id === pull.head.sha,
+            );
+
+            if (!botAlreadyApproved) {
+              await github.rest.pulls.createReview({
+                owner,
+                repo,
+                pull_number: pullNumber,
+                commit_id: pull.head.sha,
+                event: 'APPROVE',
+                body:
+                  'Automated checks passed for this commit. This approval records the automated review only; maintainer review is still required before auto-merge is enabled.',
+              });
+            }
+
+            const maintainerAlreadyReviewed = reviews.some(
+              (review) =>
+                review.user?.login === maintainer &&
+                review.commit_id === pull.head.sha &&
+                ['APPROVED', 'CHANGES_REQUESTED'].includes(review.state),
+            );
+            const maintainerAlreadyRequested = pull.requested_reviewers.some(
+              (reviewer) => reviewer.login === maintainer,
+            );
+
+            if (!maintainerAlreadyReviewed && !maintainerAlreadyRequested) {
+              await github.rest.pulls.requestReviewers({
+                owner,
+                repo,
+                pull_number: pullNumber,
+                reviewers: [maintainer],
+              });
+            }
+
+            core.summary
+              .addHeading(`Pull request #${pullNumber} is ready for maintainer review`)
+              .addList([
+                'Required automated checks passed for the current commit.',
+                'The automated checks approval was recorded.',
+                `Review was requested from @${maintainer}.`,
+              ])
+              .write();
