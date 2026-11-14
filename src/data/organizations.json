@@ -138462,9 +138462,17 @@
       }
     ],
     "repository": {
-      "repositories": [],
-      "organizationProfile": "https://www.google.com/search?q=Submitty%20source%20code%20repository",
-      "source": "search"
+      "repositories": [
+        {
+          "label": "Main project repository",
+          "url": "https://github.com/Submitty/Submitty",
+          "host": "GitHub",
+          "verified": true,
+          "lastChecked": "2026-11-14"
+        }
+      ],
+      "organizationProfile": "https://github.com/Submitty",
+      "source": "manual"
     }
   },
   {

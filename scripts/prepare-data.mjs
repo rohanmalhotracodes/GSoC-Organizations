@@ -578,6 +578,19 @@ const manualRepositories = {
     organizationProfile: 'https://github.com/discourse',
     source: 'manual',
   },
+  Submitty: {
+    repositories: [
+      {
+        label: 'Main project repository',
+        url: 'https://github.com/Submitty/Submitty',
+        host: 'GitHub',
+        verified: true,
+        lastChecked: '2026-11-14',
+      },
+    ],
+    organizationProfile: 'https://github.com/Submitty',
+    source: 'manual',
+  },
 };
 
 class UnionFind {
