@@ -221,11 +221,11 @@ const manualRepositories = {
   'Gambit: The package for computation in game theory': {
     repositories: [
       {
-        label: 'Official repositories',
-        url: 'https://github.com/gambitproject',
+        label: 'Gambit source repository',
+        url: 'https://github.com/gambitproject/gambit',
         host: 'GitHub',
         verified: true,
-        lastChecked: '2026-11-11',
+        lastChecked: '2026-11-14',
       },
     ],
     organizationProfile: 'https://github.com/gambitproject',
@@ -234,11 +234,11 @@ const manualRepositories = {
   Ganeti: {
     repositories: [
       {
-        label: 'Official repositories',
-        url: 'https://github.com/ganeti',
+        label: 'Ganeti source repository',
+        url: 'https://github.com/ganeti/ganeti',
         host: 'GitHub',
         verified: true,
-        lastChecked: '2026-11-11',
+        lastChecked: '2026-11-14',
       },
     ],
     organizationProfile: 'https://github.com/ganeti',
@@ -260,11 +260,11 @@ const manualRepositories = {
   'GNSS-SDR': {
     repositories: [
       {
-        label: 'GNSS-SDR repositories',
-        url: 'https://github.com/gnss-sdr',
+        label: 'GNSS-SDR source repository',
+        url: 'https://github.com/gnss-sdr/gnss-sdr',
         host: 'GitHub',
         verified: true,
-        lastChecked: '2026-11-11',
+        lastChecked: '2026-11-14',
       },
     ],
     organizationProfile: 'https://github.com/gnss-sdr',
@@ -332,13 +332,6 @@ const manualRepositories = {
   'Fedora Project': {
     repositories: [
       {
-        label: 'Pagure (upstream projects)',
-        url: 'https://pagure.io/',
-        host: 'Self-hosted Git',
-        verified: true,
-        lastChecked: '2026-11-14',
-      },
-      {
         label: 'Fedora dist-git (src.fedoraproject.org)',
         url: 'https://src.fedoraproject.org/',
         host: 'Self-hosted Git',
@@ -360,7 +353,7 @@ const manualRepositories = {
         lastChecked: '2026-11-14',
       },
     ],
-    organizationProfile: 'https://pagure.io/',
+    organizationProfile: 'https://src.fedoraproject.org/',
     source: 'manual',
   },
   '52°North Spatial Information Research GmbH': {
@@ -444,11 +437,11 @@ const manualRepositories = {
   OpenStreetMap: {
     repositories: [
       {
-        label: 'OpenStreetMap website',
-        url: 'https://github.com/openstreetmap/openstreetmap-website',
+        label: 'OpenStreetMap repositories',
+        url: 'https://github.com/openstreetmap',
         host: 'GitHub',
         verified: true,
-        lastChecked: '2026-11-05',
+        lastChecked: '2026-11-14',
       },
     ],
     organizationProfile: 'https://github.com/openstreetmap',
@@ -503,11 +496,11 @@ const manualRepositories = {
   'Python Software Foundation': {
     repositories: [
       {
-        label: 'CPython',
-        url: 'https://github.com/python/cpython',
+        label: 'Python repositories',
+        url: 'https://github.com/python',
         host: 'GitHub',
         verified: true,
-        lastChecked: '2026-11-05',
+        lastChecked: '2026-11-14',
       },
     ],
     organizationProfile: 'https://github.com/python',
@@ -529,11 +522,11 @@ const manualRepositories = {
   VideoLAN: {
     repositories: [
       {
-        label: 'VLC media player',
-        url: 'https://code.videolan.org/videolan/vlc',
+        label: 'VideoLAN repositories',
+        url: 'https://code.videolan.org/videolan',
         host: 'Self-hosted Git',
         verified: true,
-        lastChecked: '2026-11-05',
+        lastChecked: '2026-11-14',
       },
     ],
     organizationProfile: 'https://code.videolan.org/videolan',

@@ -33,12 +33,29 @@ Never edit either generated JSON file by itself. Run `npm run prepare:data`
 after changing `manualRepositories` and commit the source plus both generated
 files.
 
+## Primary destination
+
+The organization profile page uses `repositories[0]` for its visible
+**Repository** button. Order repository records deliberately:
+
+- For a single project, put its exact canonical source repository first.
+- For an umbrella organization or a community spanning multiple projects, put
+  its official organization, group, or source-collection root first.
+- Never use a generic hosting-service homepage or an arbitrary umbrella
+  subproject as the primary destination.
+- Keep `organizationProfile` as the broader source-host profile or fallback.
+  Additional repository records remain useful data, but they are not separate
+  primary buttons in the current interface.
+
 ## Manual review procedure
 
 1. Start with the organization’s official GSoC ideas URL, contribution guide, and website from the latest archive record.
 2. Follow only organization-controlled navigation to a source-code host. Do not treat a generic web search result or an unrelated contributor fork as authoritative.
 3. Confirm that the repository owner, project name, and linked website agree with the organization identity.
-4. For umbrella organizations, record each actively referenced project repository or an official organization profile. Do not imply that one subproject represents the umbrella.
+4. Apply the primary-destination rules above. For umbrella organizations, use
+   an official organization/group root first and record other actively
+   referenced repositories only as secondary entries. Do not imply that one
+   subproject represents the umbrella.
 5. Normalize the destination to the repository or organization root. Remove tracking parameters, file anchors, `blob`/`tree` paths, and `.git` suffixes.
 6. Record the host precisely. A self-hosted GitLab or Gitea instance is `Self-hosted Git`, not GitHub.
 7. Set `source` to `manual`, `verified` to `true`, and `lastChecked` to the actual UTC review date.
