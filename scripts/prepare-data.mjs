@@ -218,6 +218,19 @@ const manualRepositories = {
     organizationProfile: 'https://github.com/freebsd',
     source: 'manual',
   },
+  Debian: {
+    repositories: [
+      {
+        label: 'Official repositories',
+        url: 'https://salsa.debian.org/debian',
+        host: 'GitLab',
+        verified: true,
+        lastChecked: '2026-11-14',
+      },
+    ],
+    organizationProfile: 'https://salsa.debian.org/debian',
+    source: 'manual',
+  },
   'Gambit: The package for computation in game theory': {
     repositories: [
       {
