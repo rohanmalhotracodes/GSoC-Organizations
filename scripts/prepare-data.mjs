@@ -221,11 +221,11 @@ const manualRepositories = {
   'Gambit: The package for computation in game theory': {
     repositories: [
       {
-        label: 'Official repositories',
-        url: 'https://github.com/gambitproject',
+        label: 'Gambit source repository',
+        url: 'https://github.com/gambitproject/gambit',
         host: 'GitHub',
         verified: true,
-        lastChecked: '2026-11-11',
+        lastChecked: '2026-11-14',
       },
     ],
     organizationProfile: 'https://github.com/gambitproject',
@@ -234,11 +234,11 @@ const manualRepositories = {
   Ganeti: {
     repositories: [
       {
-        label: 'Official repositories',
-        url: 'https://github.com/ganeti',
+        label: 'Ganeti source repository',
+        url: 'https://github.com/ganeti/ganeti',
         host: 'GitHub',
         verified: true,
-        lastChecked: '2026-11-11',
+        lastChecked: '2026-11-14',
       },
     ],
     organizationProfile: 'https://github.com/ganeti',
@@ -260,11 +260,11 @@ const manualRepositories = {
   'GNSS-SDR': {
     repositories: [
       {
-        label: 'GNSS-SDR repositories',
-        url: 'https://github.com/gnss-sdr',
+        label: 'GNSS-SDR source repository',
+        url: 'https://github.com/gnss-sdr/gnss-sdr',
         host: 'GitHub',
         verified: true,
-        lastChecked: '2026-11-11',
+        lastChecked: '2026-11-14',
       },
     ],
     organizationProfile: 'https://github.com/gnss-sdr',
@@ -329,6 +329,33 @@ const manualRepositories = {
     organizationProfile: 'https://github.com/ceph',
     source: 'manual',
   },
+  'Fedora Project': {
+    repositories: [
+      {
+        label: 'Fedora dist-git (src.fedoraproject.org)',
+        url: 'https://src.fedoraproject.org/',
+        host: 'Self-hosted Git',
+        verified: true,
+        lastChecked: '2026-11-14',
+      },
+      {
+        label: 'Fedora Infrastructure on GitHub',
+        url: 'https://github.com/fedora-infra',
+        host: 'GitHub',
+        verified: true,
+        lastChecked: '2026-11-14',
+      },
+      {
+        label: 'Fedora on GitLab',
+        url: 'https://gitlab.com/fedora',
+        host: 'GitLab',
+        verified: true,
+        lastChecked: '2026-11-14',
+      },
+    ],
+    organizationProfile: 'https://src.fedoraproject.org/',
+    source: 'manual',
+  },
   '52°North Spatial Information Research GmbH': {
     repositories: [
       {
@@ -353,6 +380,19 @@ const manualRepositories = {
       },
     ],
     organizationProfile: 'https://github.com/AcademySoftwareFoundation',
+    source: 'manual',
+  },
+  'Drupal Association': {
+    repositories: [
+      {
+        label: 'Official repositories',
+        url: 'https://git.drupalcode.org/project',
+        host: 'Self-hosted Git',
+        verified: true,
+        lastChecked: '2026-11-14',
+      },
+    ],
+    organizationProfile: 'https://git.drupalcode.org/project',
     source: 'manual',
   },
   '3DTK': {
@@ -410,11 +450,11 @@ const manualRepositories = {
   OpenStreetMap: {
     repositories: [
       {
-        label: 'OpenStreetMap website',
-        url: 'https://github.com/openstreetmap/openstreetmap-website',
+        label: 'OpenStreetMap repositories',
+        url: 'https://github.com/openstreetmap',
         host: 'GitHub',
         verified: true,
-        lastChecked: '2026-11-05',
+        lastChecked: '2026-11-14',
       },
     ],
     organizationProfile: 'https://github.com/openstreetmap',
@@ -433,6 +473,26 @@ const manualRepositories = {
     organizationProfile: 'https://projects.blender.org/blender',
     source: 'manual',
   },
+  FFmpeg: {
+    repositories: [
+      {
+        label: 'Official repositories',
+        url: 'https://git.ffmpeg.org/ffmpeg.git',
+        host: 'Self-hosted Git',
+        verified: true,
+        lastChecked: '2026-11-13',
+      },
+      {
+        label: 'GitHub organization',
+        url: 'https://github.com/FFmpeg',
+        host: 'GitHub',
+        verified: true,
+        lastChecked: '2026-11-13',
+      },
+    ],
+    organizationProfile: 'https://git.ffmpeg.org/',
+    source: 'manual',
+  },
   'KDE Community': {
     repositories: [
       {
@@ -449,11 +509,11 @@ const manualRepositories = {
   'Python Software Foundation': {
     repositories: [
       {
-        label: 'CPython',
-        url: 'https://github.com/python/cpython',
+        label: 'Python repositories',
+        url: 'https://github.com/python',
         host: 'GitHub',
         verified: true,
-        lastChecked: '2026-11-05',
+        lastChecked: '2026-11-14',
       },
     ],
     organizationProfile: 'https://github.com/python',
@@ -475,11 +535,11 @@ const manualRepositories = {
   VideoLAN: {
     repositories: [
       {
-        label: 'VLC media player',
-        url: 'https://code.videolan.org/videolan/vlc',
+        label: 'VideoLAN repositories',
+        url: 'https://code.videolan.org/videolan',
         host: 'Self-hosted Git',
         verified: true,
-        lastChecked: '2026-11-05',
+        lastChecked: '2026-11-14',
       },
     ],
     organizationProfile: 'https://code.videolan.org/videolan',

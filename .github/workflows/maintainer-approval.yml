@@ -1,0 +1,27 @@
+name: Record maintainer approval
+
+on:
+  pull_request_review:
+    types: [submitted]
+
+permissions:
+  contents: read
+
+jobs:
+  record:
+    name: Record submitted review
+    if: >-
+      github.event.pull_request.base.ref == 'main' &&
+      github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Record the review event for trusted follow-up
+        env:
+          REVIEWER: ${{ github.event.review.user.login }}
+          REVIEW_STATE: ${{ github.event.review.state }}
+          REVIEWED_COMMIT: ${{ github.event.review.commit_id }}
+        run: |
+          echo "Review submitted by $REVIEWER"
+          echo "State: $REVIEW_STATE"
+          echo "Reviewed commit: $REVIEWED_COMMIT"

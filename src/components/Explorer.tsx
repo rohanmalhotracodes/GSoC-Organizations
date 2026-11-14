@@ -292,6 +292,27 @@ export default function Explorer({
 
           <ContributionAnnouncement compact />
 
+          {!shortlistOnly && (
+            <section
+              className="directory-introduction"
+              aria-label="About the GSoC organization directory"
+            >
+              <p>
+                Browse all <strong>{organizations.length}</strong> Google Summer
+                of Code (GSoC) organizations from {options.years.at(-1)?.value}–
+                {options.latestYear}. Compare participation history, completed
+                projects, technologies, and topics across every archived program
+                year.
+              </p>
+              <nav aria-label="Browse the directory by subject">
+                <a href="/years/">Years</a>
+                <a href="/technologies/">Technologies</a>
+                <a href="/topics/">Topics</a>
+                <a href="/categories/">Categories</a>
+              </nav>
+            </section>
+          )}
+
           {results.length ? (
             <>
               <div className="organization-grid">

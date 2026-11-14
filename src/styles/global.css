@@ -679,6 +679,47 @@ html.page-navigating .site-loading {
   gap: 10px;
 }
 
+.directory-introduction {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin: 0 0 18px;
+  padding: 13px 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.directory-introduction p {
+  margin: 0;
+}
+
+.directory-introduction strong {
+  color: var(--text);
+}
+
+.directory-introduction nav {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 13px;
+}
+
+.directory-introduction a {
+  color: var(--orange-deep);
+  font-weight: 750;
+  text-decoration: none;
+}
+
+.directory-introduction a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .saved-organizations-link .save-icon {
   width: 17px;
   height: 17px;
@@ -2334,6 +2375,17 @@ body.directory-page .site-footer {
   .toolbar-actions {
     width: 100%;
     justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .directory-introduction {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 9px;
+  }
+
+  .directory-introduction nav {
+    width: 100%;
     flex-wrap: wrap;
   }
 
