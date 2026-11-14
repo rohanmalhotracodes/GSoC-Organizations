@@ -40734,9 +40734,17 @@
       }
     ],
     "repository": {
-      "repositories": [],
-      "organizationProfile": "https://www.google.com/search?q=Free%20and%20Open%20Source%20Silicon%20Foundation%20source%20code%20repository",
-      "source": "search"
+      "repositories": [
+        {
+          "label": "Official repositories",
+          "url": "https://github.com/fossi-foundation",
+          "host": "GitHub",
+          "verified": true,
+          "lastChecked": "2026-11-14"
+        }
+      ],
+      "organizationProfile": "https://github.com/fossi-foundation",
+      "source": "manual"
     }
   },
   {
