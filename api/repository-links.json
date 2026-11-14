@@ -363,9 +363,17 @@
     "source": "manual"
   },
   "FOSSASIA": {
-    "repositories": [],
-    "organizationProfile": "https://www.google.com/search?q=FOSSASIA%20source%20code%20repository",
-    "source": "search"
+    "repositories": [
+      {
+        "label": "Official repositories",
+        "url": "https://github.com/fossasia",
+        "host": "GitHub",
+        "verified": true,
+        "lastChecked": "2026-11-13"
+      }
+    ],
+    "organizationProfile": "https://github.com/fossasia",
+    "source": "manual"
   },
   "Free and Open Source Silicon Foundation": {
     "repositories": [],
