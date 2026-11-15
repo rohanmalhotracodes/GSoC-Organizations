@@ -604,6 +604,19 @@ const manualRepositories = {
     organizationProfile: 'https://github.com/discourse',
     source: 'manual',
   },
+  'Open Technologies Alliance - GFOSS': {
+    repositories: [
+      {
+        label: 'Official repositories',
+        url: 'https://github.com/eellak',
+        host: 'GitHub',
+        verified: true,
+        lastChecked: '2026-11-15',
+      },
+    ],
+    organizationProfile: 'https://github.com/eellak',
+    source: 'manual',
+  },
 };
 
 class UnionFind {
