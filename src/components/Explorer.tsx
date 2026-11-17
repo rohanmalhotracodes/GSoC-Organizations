@@ -300,16 +300,15 @@ export default function Explorer({
               <p>
                 Browse all <strong>{organizations.length}</strong> Google Summer
                 of Code (GSoC) organizations from {options.years.at(-1)?.value}–
-                {options.latestYear}. Compare GSoC orgs by participation
-                history, completed projects, technologies, and topics.
+                {options.latestYear}. Compare participation history, completed
+                projects, technologies, and topics across every archived program
+                year.
               </p>
               <nav aria-label="Browse the directory by subject">
                 <a href="/years/">Years</a>
                 <a href="/technologies/">Technologies</a>
                 <a href="/topics/">Topics</a>
                 <a href="/categories/">Categories</a>
-                <a href="/guides/choose-a-gsoc-organization/">How to choose</a>
-                <a href="/insights/">Statistics</a>
               </nav>
             </section>
           )}

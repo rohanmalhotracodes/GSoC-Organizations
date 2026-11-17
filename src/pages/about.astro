@@ -1,11 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import DirectoryHeader from '../components/DirectoryHeader.astro';
 import organizationsData from '../data/organizations.json';
 
-const oldestYear = Math.min(
-  ...organizationsData.flatMap((organization) => organization.years),
-);
 const latestYear = Math.max(
   ...organizationsData.flatMap((organization) => organization.years),
 );
@@ -16,79 +12,53 @@ const latestYear = Math.max(
   description="How GSoC Organizations sources, normalizes, and verifies organization data and repository links."
   pageType="AboutPage"
 >
-  <main class="hub-page">
-    <DirectoryHeader />
-    <nav class="breadcrumbs" aria-label="Breadcrumb">
-      <a href="/">Organizations</a><span aria-hidden="true">/</span>
-      <span aria-current="page">About the data</span>
-    </nav>
+  <main class="prose-page">
     <div class="page-intro">
       <span class="eyebrow">Transparent by design</span>
       <h1>About the data</h1>
       <p>
-        GSoC Organizations is an independent directory of {
-          organizationsData.length
-        }
-        Google Summer of Code organisations from {oldestYear}–{latestYear}. It
-        helps contributors compare communities and research historical projects;
-        it does not predict acceptance or future participation.
+        GSoC Organizations reorganizes public Google Summer of Code archive data
+        for research. It does not rank organizations or predict acceptance.
       </p>
     </div>
     <div class="prose-grid">
       <article class="detail-card prose-card">
         <h2>What is included</h2>
         <p>
-          The dataset covers annual archive records from {oldestYear} through {
-            latestYear
-          }, with organization metadata, participation years, and historical
+          The local dataset covers annual archive records through {latestYear},
+          with organization metadata, participation years, and historical
           projects. Tags are normalized only for obvious spelling,
           capitalization, and whitespace equivalents.
         </p>
         <p>
-          An organization’s technology and topic tags combine its latest three
-          archived appearances. They describe the organization’s recorded
-          interests, not the requirements of every project. Category and
-          descriptive text use the most recent available information.
-        </p>
-        <p>
-          Years before {oldestYear} are not included. “New” organizations are those
-          with no earlier appearance in this dataset, which cannot rule out participation
-          before our coverage begins. Some records include a project total without
-          complete details for every project.
+          Project-level technology tags are inferred by matching an
+          organization’s declared technologies against project text. They are
+          labeled as inferred and should be used as discovery hints, not
+          authoritative classifications.
         </p>
       </article>
       <article class="detail-card prose-card">
-        <h2>How repository links are chosen</h2>
+        <h2>Repository link states</h2>
         <ul>
           <li>
-            <strong>Manually reviewed links</strong> are recorded with verification
-            status and a check date in the repository data. Reviewers use organization-controlled
-            sources to establish ownership.
+            <strong>Verified</strong> links were manually checked against an official
+            organization-controlled source.
           </li>
           <li>
-            <strong>Automatically derived links</strong> come from archived ideas,
-            contribution, or website URLs and may not have been manually verified.
+            <strong>Inferred</strong> links are derived from official ideas, contribution,
+            or organization URLs.
           </li>
           <li>
-            <strong>Find repository</strong> is a search fallback when no direct source
-            can be established.
+            <strong>Find repositories</strong> is a clearly labeled search fallback
+            when no direct source can be established.
           </li>
         </ul>
-        <p>
-          Umbrella organizations generally link to their source-hosting
-          organization profile. A community centered on one project may link to
-          that project’s repository. Confirm contribution instructions on the
-          destination itself.
-        </p>
       </article>
       <article class="detail-card prose-card">
         <h2>Privacy and independence</h2>
         <p>
-          Saved organizations stay in your browser’s local storage. There is no
-          account system. The GitHub star button requests public repository
-          metadata to refresh its count. See the <a href="/privacy/"
-            >privacy policy</a
-          > for browser storage and external services.
+          Bookmarks and notes stay in browser storage. The site has no account
+          system, advertising, analytics, or runtime GitHub API calls.
         </p>
         <p>
           This independent community project is not affiliated with or endorsed
@@ -98,40 +68,12 @@ const latestYear = Math.max(
       <article class="detail-card prose-card">
         <h2>Methodology</h2>
         <p>
-          The site is generated from <a
-            href="https://github.com/rohanmalhotracodes/GSoC-Organizations/tree/main/data/raw"
-            >version-controlled annual snapshots</a
-          >. The <a
-            href="https://github.com/rohanmalhotracodes/GSoC-Organizations/blob/main/scripts/prepare-data.mjs"
-            >preparation script</a
-          >
-          combines known name changes and matching organization websites into one
-          profile. Totals and participation history are recalculated from those records.
-        </p>
-        <p>
-          Compare <a href="/insights/"
-            >participation and technology statistics</a
-          >
-          or consult the <a href="https://summerofcode.withgoogle.com/archive"
-            >official GSoC archive</a
-          >
-          for program records. The official GSoC website is the authority for each
-          year’s accepted organizations and current program information.
-        </p>
-      </article>
-      <article class="detail-card prose-card">
-        <h2>Corrections and maintenance</h2>
-        <p>
-          Created and maintained by <a
-            href="https://github.com/rohanmalhotracodes">Rohan Malhotra</a
-          >
-          with community contributions. If you find a missing link or an incorrect
-          record, <a
-            href="https://github.com/rohanmalhotracodes/GSoC-Organizations/issues"
-            >report it on GitHub</a
-          >
-          with the organization, program year, and an official source. Archive counts
-          and links update when corrected data is published; they are not a live feed.
+          See the repository documentation for the complete <a
+            href="https://github.com/rohanmalhotracodes/GSoC-Organizations"
+            target="_blank"
+            rel="noreferrer">research record ↗</a
+          >, data-refresh steps, validation checks, and repository-review
+          workflow.
         </p>
       </article>
     </div>

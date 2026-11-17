@@ -704,14 +704,12 @@ html.page-navigating .site-loading {
 
 .directory-introduction nav {
   display: flex;
-  flex: 0 1 auto;
-  flex-wrap: wrap;
+  flex: 0 0 auto;
   align-items: center;
   gap: 13px;
 }
 
 .directory-introduction a {
-  white-space: nowrap;
   color: var(--orange-deep);
   font-weight: 750;
   text-decoration: none;
@@ -1728,59 +1726,6 @@ html.page-navigating .site-loading {
 
 .prose-card ul {
   padding-left: 20px;
-}
-
-.guide-checklist,
-.guide-faq {
-  margin-top: 18px;
-}
-
-.guide-faq .section-heading {
-  margin-bottom: 12px;
-}
-
-.guide-byline,
-.insights-note {
-  color: var(--text-secondary);
-  font-size: 13px;
-}
-
-.insights-table-scroll {
-  max-width: 100%;
-  overflow-x: auto;
-}
-
-.insights-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 14px;
-  font-variant-numeric: tabular-nums;
-}
-
-.insights-table caption {
-  padding: 8px 0 12px;
-  text-align: left;
-  color: var(--text-secondary);
-}
-
-.insights-table th,
-.insights-table td {
-  padding: 12px;
-  border-bottom: 1px solid var(--border);
-  text-align: right;
-}
-
-.insights-table th:first-child {
-  text-align: left;
-}
-
-.insights-table thead {
-  background: var(--page);
-}
-
-.insights-table thead th {
-  min-width: 110px;
-  vertical-align: bottom;
 }
 
 .empty-page {
