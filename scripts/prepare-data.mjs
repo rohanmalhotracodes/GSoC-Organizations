@@ -745,6 +745,19 @@ const manualRepositories = {
     organizationProfile: 'https://github.com/fossi-foundation',
     source: 'manual',
   },
+  coreboot: {
+    repositories: [
+      {
+        label: 'coreboot Gerrit repository',
+        url: 'https://review.coreboot.org/coreboot',
+        host: 'Self-hosted Git',
+        verified: true,
+        lastChecked: '2026-11-19',
+      },
+    ],
+    organizationProfile: 'https://review.coreboot.org/coreboot',
+    source: 'manual',
+  },
   preCICE: {
     repositories: [
       {
