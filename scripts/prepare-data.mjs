@@ -335,6 +335,19 @@ const manualRepositories = {
     organizationProfile: 'https://gitlab.com/scilab',
     source: 'manual',
   },
+  'The Julia Language': {
+    repositories: [
+      {
+        label: 'Julia source repository',
+        url: 'https://github.com/JuliaLang/julia',
+        host: 'GitHub',
+        verified: true,
+        lastChecked: '2026-11-24',
+      },
+    ],
+    organizationProfile: 'https://github.com/JuliaLang',
+    source: 'manual',
+  },
   'Genes, Genomes and Variation': {
     repositories: [
       {

@@ -151947,9 +151947,17 @@
       }
     ],
     "repository": {
-      "repositories": [],
-      "organizationProfile": "https://www.google.com/search?q=The%20Julia%20Language%20source%20code%20repository",
-      "source": "search"
+      "repositories": [
+        {
+          "label": "Julia source repository",
+          "url": "https://github.com/JuliaLang/julia",
+          "host": "GitHub",
+          "verified": true,
+          "lastChecked": "2026-11-24"
+        }
+      ],
+      "organizationProfile": "https://github.com/JuliaLang",
+      "source": "manual"
     }
   },
   {
