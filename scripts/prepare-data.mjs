@@ -369,6 +369,26 @@ const manualRepositories = {
     organizationProfile: 'https://gitlab.com/scilab',
     source: 'manual',
   },
+  'The Julia Language': {
+    repositories: [
+      {
+        label: 'Official repositories',
+        url: 'https://github.com/JuliaLang',
+        host: 'GitHub',
+        verified: true,
+        lastChecked: '2026-11-27',
+      },
+      {
+        label: 'Julia source repository',
+        url: 'https://github.com/JuliaLang/julia',
+        host: 'GitHub',
+        verified: true,
+        lastChecked: '2026-11-27',
+      },
+    ],
+    organizationProfile: 'https://github.com/JuliaLang',
+    source: 'manual',
+  },
   'Ruby on Rails': {
     repositories: [
       {
