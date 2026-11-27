@@ -387,6 +387,17 @@ const manualRepositories = {
       },
     ],
     organizationProfile: 'https://github.com/JuliaLang',
+  'Ruby on Rails': {
+    repositories: [
+      {
+        label: 'Rails source repository',
+        url: 'https://github.com/rails/rails',
+        host: 'GitHub',
+        verified: true,
+        lastChecked: '2026-11-24',
+      },
+    ],
+    organizationProfile: 'https://github.com/rails',
     source: 'manual',
   },
   'Genes, Genomes and Variation': {
