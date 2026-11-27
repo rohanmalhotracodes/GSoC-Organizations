@@ -1044,15 +1044,19 @@
     "source": "search"
   },
   "OSGeo (Open Source Geospatial Foundation)": {
-    "repositories": [],
-    "organizationProfile": "https://www.google.com/search?q=OSGeo%20(Open%20Source%20Geospatial%20Foundation)%20source%20code%20repository",
-    "source": "search"
+    "repositories": [
+      {
+        "label": "Official repositories",
+        "url": "https://github.com/OSGeo",
+        "host": "GitHub",
+        "verified": true,
+        "lastChecked": "2026-11-27"
+      }
+    ],
+    "organizationProfile": "https://github.com/OSGeo",
+    "source": "manual"
   },
-  "OSU Open Source Lab": {
-    "repositories": [],
-    "organizationProfile": "https://www.google.com/search?q=OSU%20Open%20Source%20Lab%20source%20code%20repository",
-    "source": "search"
-  },
+  
   "OWASP Foundation": {
     "repositories": [],
     "organizationProfile": "https://www.google.com/search?q=OWASP%20Foundation%20source%20code%20repository",
