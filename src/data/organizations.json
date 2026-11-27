@@ -130073,9 +130073,17 @@
       }
     ],
     "repository": {
-      "repositories": [],
-      "organizationProfile": "https://www.google.com/search?q=Ruby%20on%20Rails%20source%20code%20repository",
-      "source": "search"
+      "repositories": [
+        {
+          "label": "Rails source repository",
+          "url": "https://github.com/rails/rails",
+          "host": "GitHub",
+          "verified": true,
+          "lastChecked": "2026-11-24"
+        }
+      ],
+      "organizationProfile": "https://github.com/rails",
+      "source": "manual"
     }
   },
   {
