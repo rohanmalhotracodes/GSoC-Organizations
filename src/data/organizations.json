@@ -169025,9 +169025,17 @@
       }
     ],
     "repository": {
-      "repositories": [],
-      "organizationProfile": "https://www.google.com/search?q=Zulip%20source%20code%20repository",
-      "source": "search"
+      "repositories": [
+        {
+          "label": "Zulip source repository",
+          "url": "https://github.com/zulip/zulip",
+          "host": "GitHub",
+          "verified": true,
+          "lastChecked": "2026-11-27"
+        }
+      ],
+      "organizationProfile": "https://github.com/zulip",
+      "source": "manual"
     }
   },
   {

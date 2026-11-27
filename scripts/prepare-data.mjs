@@ -825,6 +825,19 @@ const manualRepositories = {
     organizationProfile: 'https://gitlab.dune-project.org/core',
     source: 'manual',
   },
+  Zulip: {
+    repositories: [
+      {
+        label: 'Zulip source repository',
+        url: 'https://github.com/zulip/zulip',
+        host: 'GitHub',
+        verified: true,
+        lastChecked: '2026-11-27',
+      },
+    ],
+    organizationProfile: 'https://github.com/zulip',
+    source: 'manual',
+  },
 };
 
 class UnionFind {
