@@ -387,6 +387,8 @@ const manualRepositories = {
       },
     ],
     organizationProfile: 'https://github.com/JuliaLang',
+    source: 'manual',
+  },
   'Ruby on Rails': {
     repositories: [
       {
