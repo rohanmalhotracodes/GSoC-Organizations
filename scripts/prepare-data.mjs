@@ -296,6 +296,40 @@ const manualRepositories = {
     organizationProfile: 'https://github.com/gnss-sdr',
     source: 'manual',
   },
+  'GNU Mailman Project': {
+    repositories: [
+      {
+        label: 'Official repositories',
+        url: 'https://gitlab.com/mailman',
+        host: 'GitLab',
+        verified: true,
+        lastChecked: '2026-11-22',
+      },
+      {
+        label: 'Mailman Core repository',
+        url: 'https://gitlab.com/mailman/mailman',
+        host: 'GitLab',
+        verified: true,
+        lastChecked: '2026-11-22',
+      },
+      {
+        label: 'Postorius repository',
+        url: 'https://gitlab.com/mailman/postorius',
+        host: 'GitLab',
+        verified: true,
+        lastChecked: '2026-11-22',
+      },
+      {
+        label: 'HyperKitty repository',
+        url: 'https://gitlab.com/mailman/hyperkitty',
+        host: 'GitLab',
+        verified: true,
+        lastChecked: '2026-11-22',
+      },
+    ],
+    organizationProfile: 'https://gitlab.com/mailman',
+    source: 'manual',
+  },
   ScummVM: {
     repositories: [
       {
