@@ -1056,7 +1056,11 @@
     "organizationProfile": "https://github.com/OSGeo",
     "source": "manual"
   },
-  
+  "OSU Open Source Lab": {
+    "repositories": [],
+    "organizationProfile": "https://www.google.com/search?q=OSU%20Open%20Source%20Lab%20source%20code%20repository",
+    "source": "search"
+  },
   "OWASP Foundation": {
     "repositories": [],
     "organizationProfile": "https://www.google.com/search?q=OWASP%20Foundation%20source%20code%20repository",
