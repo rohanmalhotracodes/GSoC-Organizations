@@ -27094,9 +27094,17 @@
       }
     ],
     "repository": {
-      "repositories": [],
-      "organizationProfile": "https://www.google.com/search?q=coreboot%20source%20code%20repository",
-      "source": "search"
+      "repositories": [
+        {
+          "label": "coreboot Gerrit repository",
+          "url": "https://review.coreboot.org/coreboot",
+          "host": "Self-hosted Git",
+          "verified": true,
+          "lastChecked": "2026-11-19"
+        }
+      ],
+      "organizationProfile": "https://review.coreboot.org/coreboot",
+      "source": "manual"
     }
   },
   {
