@@ -825,6 +825,19 @@ const manualRepositories = {
     organizationProfile: 'https://gitlab.dune-project.org/core',
     source: 'manual',
   },
+  'OSGeo (Open Source Geospatial Foundation)': {
+    repositories: [
+      {
+        label: 'Official repositories',
+        url: 'https://github.com/OSGeo',
+        host: 'GitHub',
+        verified: true,
+        lastChecked: '2026-11-27',
+      },
+    ],
+    organizationProfile: 'https://github.com/OSGeo',
+    source: 'manual',
+  },
 };
 
 class UnionFind {
